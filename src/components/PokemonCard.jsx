@@ -21,14 +21,6 @@ export default function PokemonCard(props) {
 
     let cache = JSON.parse(localStorage.getItem("pokedex-data")) || {};
 
-    // if (selectedPokemon in cache) {
-    //   console.log("here");
-    //   setPokemonData(cache[selectedPokemon]);
-    //   console.log("Found in cache ");
-    //   console.log(cache[selectedPokemon]);
-    //   return; 
-    // }
-
     if (selectedPokemon in cache) {
       //read from cache
       setPokemonData(cache[selectedPokemon]);
@@ -40,7 +32,9 @@ export default function PokemonCard(props) {
     async function fetchPokemonData() {
       setLoading(true);
       try {
-        const url = `https://pokeapi.co/api/v2/pokemon/${getPokedexNumber(selectedPokemon)}`;
+        const url = `https://pokeapi.co/api/v2/pokemon/${getPokedexNumber(
+          selectedPokemon
+        )}`;
         const res = await fetch(url);
         const data = await res.json();
         setPokemonData(data);
@@ -62,8 +56,16 @@ export default function PokemonCard(props) {
     <>
       <div className="poke-card">
         <h3># {getFullPokedexNumber(selectedPokemon)}</h3>
-        <h2 className="">{name?name.charAt(0).toUpperCase() + name.slice(1):''}</h2>
-        <TypeCard types={types}/>
+        <h2 className="">
+          {name ? name.charAt(0).toUpperCase() + name.slice(1) : ""}
+        </h2>
+
+        <div className="type-card">
+          {types?.map((type, index) => {
+            return <TypeCard key={index} type={type?.type?.name} />;
+          })}
+        </div>
+
         <img className="pokemon-img" src="/pokemon/001.png" alt="" />
 
         <div className="img-container">
