@@ -4,7 +4,7 @@ import SideNav from './components/SideNav'
 import PokemonCard from './components/PokemonCard'
 
 function App() {
-  const [selectedPokemon, setSelectedPokemon] = useState(0)
+  const [selectedPokemon, setSelectedPokemon] = useState(20)
 
   return (
     <>

@@ -57,7 +57,7 @@ export default function PokemonCard(props) {
       <div className="poke-card">
         <h3># {getFullPokedexNumber(selectedPokemon)}</h3>
         <h2 className="">
-          {name ? name.charAt(0).toUpperCase() + name.slice(1) : ""}
+          {name ? name.charAt(0).toUpperCase() + name.slice(1) : "Loading"}
         </h2>
 
         <div className="type-card">
@@ -66,7 +66,7 @@ export default function PokemonCard(props) {
           })}
         </div>
 
-        <img className="pokemon-img" src="/pokemon/001.png" alt="" />
+        <img className="pokemon-img" src={`/pokemon/${getFullPokedexNumber(selectedPokemon)}.png`} alt="" />
 
         <div className="img-container">
           <img src="/public/17.png" alt="" />
